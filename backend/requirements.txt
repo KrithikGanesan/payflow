@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+pydantic
+python-multipart
+sse-starlette
+google-generativeai
+pdfplumber
+rapidfuzz
+reportlab
+pillow
+python-dateutil
+pytest
+python-dotenv

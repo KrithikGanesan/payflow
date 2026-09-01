@@ -1,0 +1,12 @@
+#!/bin/bash
+# Boots PayFlow backend + frontend for the demo.
+set -e
+cd "$(dirname "$0")"
+# load backend/.env (GEMINI_API_KEY, EXTRACTION_PROVIDER, GEMINI_MODEL, …)
+set -a; [ -f backend/.env ] && . backend/.env; set +a
+echo "▸ extraction provider: ${EXTRACTION_PROVIDER:-gemini}  (model ${GEMINI_MODEL:-?})"
+echo "▸ backend  → http://localhost:8000"
+(cd backend && ../.venv/bin/uvicorn app.main:app --port 8000) &
+echo "▸ frontend → http://localhost:5173"
+(cd frontend && npm run dev) &
+wait

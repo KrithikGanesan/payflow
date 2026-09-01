@@ -1,0 +1,19 @@
+[
+  {"vendor_id": "V001", "invoice_number": "INV-AC-100", "amount": 11800.00, "invoice_date": "2026-05-15", "line_fingerprint": "acme:laptop:qty10"},
+  {"vendor_id": "V001", "invoice_number": "INV-AC-101", "amount": 12200.00, "invoice_date": "2026-06-15", "line_fingerprint": "acme:laptop:qty10"},
+  {"vendor_id": "V002", "invoice_number": "INV-GX-200", "amount": 4400.00, "invoice_date": "2026-06-01", "line_fingerprint": "globex:shelving:safety"},
+  {"vendor_id": "V002", "invoice_number": "INV-GX-201", "amount": 4600.00, "invoice_date": "2026-07-01", "line_fingerprint": "globex:shelving:safety"},
+  {"vendor_id": "V003", "invoice_number": "INV-IT-300", "amount": 20000.00, "invoice_date": "2026-05-01", "line_fingerprint": "initech:milestone"},
+  {"vendor_id": "V003", "invoice_number": "INV-IT-301", "amount": 20000.00, "invoice_date": "2026-06-01", "line_fingerprint": "initech:milestone"},
+  {"vendor_id": "V005", "invoice_number": "INV-SL-500", "amount": 9800.00, "invoice_date": "2026-06-10", "line_fingerprint": "stark:freight:q2"},
+  {"vendor_id": "V006", "invoice_number": "INV-WC-1900", "amount": 6800.00, "invoice_date": "2026-05-10", "line_fingerprint": "wayne:advisory:hrs"},
+  {"vendor_id": "V006", "invoice_number": "INV-WC-1950", "amount": 7200.00, "invoice_date": "2026-05-28", "line_fingerprint": "wayne:advisory:hrs"},
+  {"vendor_id": "V006", "invoice_number": "INV-WC-2001", "amount": 7500.00, "invoice_date": "2026-06-15", "line_fingerprint": "wayne:advisory:50hr:150"},
+  {"vendor_id": "V007", "invoice_number": "INV-CY-3001", "amount": 1900.00, "invoice_date": "2026-04-01", "line_fingerprint": "cyberdyne:parts"},
+  {"vendor_id": "V007", "invoice_number": "INV-CY-3002", "amount": 2100.00, "invoice_date": "2026-05-01", "line_fingerprint": "cyberdyne:parts"},
+  {"vendor_id": "V007", "invoice_number": "INV-CY-3003", "amount": 2000.00, "invoice_date": "2026-06-01", "line_fingerprint": "cyberdyne:parts"},
+  {"vendor_id": "V007", "invoice_number": "INV-CY-3004", "amount": 2200.00, "invoice_date": "2026-07-01", "line_fingerprint": "cyberdyne:parts"},
+  {"vendor_id": "V009", "invoice_number": "INV-NK-900", "amount": 7900.00, "invoice_date": "2026-06-20", "line_fingerprint": "nakatomi:components"},
+  {"vendor_id": "V010", "invoice_number": "INV-SF-700", "amount": 5000.00, "invoice_date": "2026-07-15", "line_fingerprint": "soylent:catering:offsite"},
+  {"vendor_id": "V011", "invoice_number": "INV-TY-800", "amount": 5900.00, "invoice_date": "2026-07-05", "line_fingerprint": "tyrell:maintenance"}
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "gr_id": "GR-9001",
+    "po_number": "PO-1001",
+    "received_total": 12000.0,
+    "received_date": "2026-08-20"
+  },
+  {
+    "gr_id": "GR-9002",
+    "po_number": "PO-1002",
+    "received_total": 4500.0,
+    "received_date": "2026-08-21"
+  },
+  {
+    "gr_id": "GR-9006",
+    "po_number": "PO-1006",
+    "received_total": 40000.0,
+    "received_date": "2026-08-18"
+  },
+  {
+    "gr_id": "GR-9009",
+    "po_number": "PO-1009",
+    "received_total": 6000.0,
+    "received_date": "2026-08-22"
+  },
+  {
+    "gr_id": "GR-9013a",
+    "po_number": "PO-1013",
+    "received_total": 4000.0,
+    "received_date": "2026-08-19"
+  },
+  {
+    "gr_id": "GR-9013b",
+    "po_number": "PO-1013",
+    "received_total": 6000.0,
+    "received_date": "2026-08-26"
+  }
+]

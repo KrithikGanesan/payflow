@@ -1,0 +1,42 @@
+{
+  "doc_type": "INVOICE",
+  "vendor_name": "Initech Software Services Inc.",
+  "vendor_tax_id": "US-22-3344556",
+  "vendor_address": "1 Cubicle Plaza, Austin, TX 78701",
+  "invoice_number": "INI-M2",
+  "invoice_date": "2026-08-27",
+  "due_date": "2026-09-26",
+  "po_number": "PO-1003",
+  "currency": "USD",
+  "line_items": [
+    {
+      "description": "Platform implementation - milestone 2 of 3",
+      "quantity": 1.0,
+      "unit_price": 20000.0,
+      "amount": 20000.0,
+      "tax_rate": null
+    }
+  ],
+  "subtotal": 20000.0,
+  "tax_total": 0.0,
+  "freight": 0.0,
+  "discount": 0.0,
+  "total": 20000.0,
+  "payment_terms": "Net 30",
+  "remit_to_bank": "sha256:4c7d9a0b1e23",
+  "confidence": {
+    "vendor_name": 0.97,
+    "invoice_number": 0.97,
+    "invoice_date": 0.97,
+    "po_number": 0.97,
+    "currency": 0.97,
+    "subtotal": 0.97,
+    "tax_total": 0.97,
+    "total": 0.97,
+    "line_items": 0.97
+  },
+  "validation": {
+    "line_items_sum_ok": true,
+    "subtotal_plus_tax_ok": true
+  }
+}

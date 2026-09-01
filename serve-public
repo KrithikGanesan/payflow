@@ -1,0 +1,14 @@
+#!/bin/bash
+# Serve PayFlow at a public URL (single-origin prod server + cloudflared quick tunnel).
+# Run this in your own terminal before the interview:  ./serve-public
+set -e
+cd "$(dirname "$0")"
+set -a; [ -f backend/.env ] && . backend/.env; set +a
+[ -f frontend/dist/index.html ] || (echo "▸ building frontend…"; cd frontend && npm run build)
+echo "▸ starting PayFlow (API + app) on http://localhost:8000"
+(cd backend && ../.venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000) &
+UV=$!
+trap "kill $UV 2>/dev/null" EXIT
+echo "▸ opening public tunnel — your shareable https URL prints below:"
+echo "  (Ctrl-C stops both the server and the tunnel)"
+cloudflared tunnel --url http://localhost:8000

@@ -1,0 +1,42 @@
+{
+  "doc_type": "INVOICE",
+  "vendor_name": "Hooli Cloud Services Inc.",
+  "vendor_tax_id": "US-90-5551212",
+  "vendor_address": "900 Innovation Way, Palo Alto, CA 94301",
+  "invoice_number": "HL-2026-041",
+  "invoice_date": "2026-08-27",
+  "due_date": "2026-09-26",
+  "po_number": "PO-1013",
+  "currency": "USD",
+  "line_items": [
+    {
+      "description": "Managed cloud hosting - annual",
+      "quantity": 1.0,
+      "unit_price": 10000.0,
+      "amount": 10000.0,
+      "tax_rate": null
+    }
+  ],
+  "subtotal": 10000.0,
+  "tax_total": 0.0,
+  "freight": 0.0,
+  "discount": 0.0,
+  "total": 10000.0,
+  "payment_terms": "Net 30",
+  "remit_to_bank": "sha256:aa11bb22cc33",
+  "confidence": {
+    "vendor_name": 0.97,
+    "invoice_number": 0.97,
+    "invoice_date": 0.97,
+    "po_number": 0.97,
+    "currency": 0.97,
+    "subtotal": 0.97,
+    "tax_total": 0.97,
+    "total": 0.97,
+    "line_items": 0.97
+  },
+  "validation": {
+    "line_items_sum_ok": true,
+    "subtotal_plus_tax_ok": true
+  }
+}

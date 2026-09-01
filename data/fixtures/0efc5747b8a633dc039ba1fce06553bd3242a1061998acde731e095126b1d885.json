@@ -1,0 +1,48 @@
+{
+  "doc_type": "INVOICE",
+  "vendor_name": "Acme Corporation Inc.",
+  "vendor_tax_id": "US-88-1234567",
+  "vendor_address": "4400 Commerce Blvd, Springfield, IL 62704",
+  "invoice_number": "ACM-2026-501",
+  "invoice_date": "2026-08-27",
+  "due_date": "2026-09-26",
+  "po_number": "PO-1001",
+  "currency": "USD",
+  "line_items": [
+    {
+      "description": "Enterprise Laptop 14in i7/32GB",
+      "quantity": 10.0,
+      "unit_price": 1200.0,
+      "amount": 12000.0,
+      "tax_rate": null
+    }
+  ],
+  "subtotal": 12000.0,
+  "tax_total": 0.0,
+  "freight": null,
+  "discount": null,
+  "total": 12000.0,
+  "payment_terms": "Net 30",
+  "remit_to_bank": null,
+  "confidence": {
+    "doc_type": 1.0,
+    "vendor_name": 1.0,
+    "vendor_tax_id": 1.0,
+    "vendor_address": 1.0,
+    "invoice_number": 1.0,
+    "invoice_date": 1.0,
+    "due_date": 1.0,
+    "po_number": 1.0,
+    "currency": 1.0,
+    "line_items": 0.95,
+    "subtotal": 1.0,
+    "tax_total": 1.0,
+    "total": 1.0,
+    "payment_terms": 0.95,
+    "_overall": 0.9929
+  },
+  "validation": {
+    "line_items_sum_ok": true,
+    "subtotal_plus_tax_ok": true
+  }
+}

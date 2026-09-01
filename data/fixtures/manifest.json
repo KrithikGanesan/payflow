@@ -1,0 +1,107 @@
+[
+  {
+    "filename": "01_clean_exact.pdf",
+    "sha256": "8985d2c0d103ec3a5c6b9c53944c0303921c0e9cd4f473778f31c0c3205fd10d",
+    "scenario": "clean_happy_path_exact",
+    "expected_decision": "APPROVE",
+    "note": "Total exactly equals PO-1001 ($12,000); 3-way match w/ GR-9001."
+  },
+  {
+    "filename": "02_clean_tolerance.pdf",
+    "sha256": "8b994826a517c01249b01efff8400f8e60aa145d09e6b625caeb054dd262aa1f",
+    "scenario": "clean_within_tolerance",
+    "expected_decision": "APPROVE",
+    "note": "Total $4,512 vs PO $4,500 = +$12 (+0.27%): within +/-1% AND <=$25."
+  },
+  {
+    "filename": "03_split_po_partial.pdf",
+    "sha256": "4c495cb131dca210c1e14c1163d1c046243d04bcef4385e20e2b5b1b36bf6e83",
+    "scenario": "split_po_partial_billing",
+    "expected_decision": "APPROVE",
+    "note": "PO-1003 already billed $20k of $60k; this $20k -> cum $40k <= $60k."
+  },
+  {
+    "filename": "04_fuzzy_duplicate.pdf",
+    "sha256": "5382e5aaade46ff55c74ffaf6ca4fcbd4114e3fa5fb14652e07129f29cbdcb78",
+    "scenario": "fuzzy_duplicate",
+    "expected_decision": "HOLD",
+    "note": "Same vendor+amount ($7,500) as historical INV-WC-2001, different inv#."
+  },
+  {
+    "filename": "05_tax_over_tolerance.pdf",
+    "sha256": "f65dccbde8fe0a53d8f9182f64b1a64ef9874e9e736b4f4f8526386ca677d25e",
+    "scenario": "tax_over_tolerance",
+    "expected_decision": "HOLD",
+    "note": "Goods subtotal $10,300 vs PO $10,000 = +3.0% over tolerance (tax/freight excluded from the check)."
+  },
+  {
+    "filename": "06_scanned_lowconf.pdf",
+    "sha256": "c4d9a1f571780540eb9a794e6fecc6d8daa35cfde52dd78c745a00673ea842b4",
+    "scenario": "scanned_low_confidence",
+    "expected_decision": "HOLD",
+    "note": "Image-only (rasterised) PDF: no text layer -> low field confidence."
+  },
+  {
+    "filename": "07_po_bypass_small.pdf",
+    "sha256": "c7aa0b4a6f0445b4b7d0dd83b480ee6fef0bcba5a7ba719326a6734ae3cd1ff2",
+    "scenario": "po_bypass_small",
+    "expected_decision": "APPROVE",
+    "note": "No PO, <$500, approved bypass vendor (Facilities) -> APPROVE + notify."
+  },
+  {
+    "filename": "08_name_mismatch.pdf",
+    "sha256": "1cd218d0dd67b4b323b6c018a976bcf96d4439f1c1c92042a2e65e8bf6e33e79",
+    "scenario": "vendor_name_mismatch",
+    "expected_decision": "HOLD",
+    "note": "Invoice name 'Acme Corp' vs master 'Acme Corporation Inc.' -> fuzzy match."
+  },
+  {
+    "filename": "09_unapproved_vendor.pdf",
+    "sha256": "72f1454e9715a563ccbd830eb53839f4cc04a2ed5233ddefb4d872f7d173700d",
+    "scenario": "unapproved_vendor",
+    "expected_decision": "HOLD",
+    "note": "Vendor V008 is approved=false -> compliance HOLD (matches PO otherwise)."
+  },
+  {
+    "filename": "10_spend_anomaly.pdf",
+    "sha256": "c69de1ddb3a558c5d1d443e01300b4a2e6fda79db13b4282bbc13a5deb31df99",
+    "scenario": "spend_anomaly",
+    "expected_decision": "HOLD",
+    "note": "$40k vs vendor history avg ~$2,050 (~20x). Matches PO/GR but anomalous."
+  },
+  {
+    "filename": "11_credit_memo.pdf",
+    "sha256": "ee84eedd0fa97a11f054ed295839f04164a2f43822a0c5cd9500e594caed3887",
+    "scenario": "credit_memo",
+    "expected_decision": "HOLD",
+    "note": "Negative total (credit memo) -> routed separately (financial HOLD)."
+  },
+  {
+    "filename": "12_currency_mismatch.pdf",
+    "sha256": "595d01ccfdc72dc828cd0caf465fd9cd2ec93426dddd6ab57efdf05559c9c73d",
+    "scenario": "currency_mismatch",
+    "expected_decision": "HOLD",
+    "note": "Invoice currency EUR vs PO-1005 currency USD -> currency HOLD."
+  },
+  {
+    "filename": "13_exact_duplicate.pdf",
+    "sha256": "0fd1d67e549e364f0ee4a8fef1a4049da6de90ab48ff5577d52af0fb85769ce0",
+    "scenario": "exact_duplicate",
+    "expected_decision": "REJECT",
+    "note": "Exact match of already-paid historical INV-WC-2001 (same #/amount/date)."
+  },
+  {
+    "filename": "14_multi_gr.pdf",
+    "sha256": "77c3bfd1d51e1baad26c413bc4e8314a64141bc34de47384e731781ad912f223",
+    "scenario": "multi_gr_aggregation",
+    "expected_decision": "APPROVE",
+    "note": "PO-1013 was received in two shipments (GR-9013a $4k + GR-9013b $6k). Invoice $10k matches the SUM; a naive matcher comparing only GR1 would wrongly flag it."
+  },
+  {
+    "filename": "15_awaiting_receipt.pdf",
+    "sha256": "b9b7139079ff11b4f6fd7338bf6acc0dd096f7019c9bd6cff5dc16bd62ba9d8d",
+    "scenario": "awaiting_goods_receipt",
+    "expected_decision": "HOLD",
+    "note": "3-way PO with NO goods receipt yet \u2014 invoice arrived before the goods. Hold awaiting receipt, not reject."
+  }
+]

@@ -1,0 +1,42 @@
+{
+  "doc_type": "INVOICE",
+  "vendor_name": "Stark Logistics LLC",
+  "vendor_tax_id": "US-11-9988776",
+  "vendor_address": "200 Grand Central, New York, NY 10017",
+  "invoice_number": "STK-7781",
+  "invoice_date": "2026-08-25",
+  "due_date": "2026-09-24",
+  "po_number": "PO-1004",
+  "currency": "USD",
+  "line_items": [
+    {
+      "description": "Regional freight & distribution - Q3",
+      "quantity": 1.0,
+      "unit_price": 10300.0,
+      "amount": 10300.0,
+      "tax_rate": 0.0485
+    }
+  ],
+  "subtotal": 10300.0,
+  "tax_total": 500.0,
+  "freight": 300.0,
+  "discount": 0.0,
+  "total": 11100.0,
+  "payment_terms": "Net 30",
+  "remit_to_bank": "sha256:2d5b7f1a3c48",
+  "confidence": {
+    "vendor_name": 0.97,
+    "invoice_number": 0.97,
+    "invoice_date": 0.97,
+    "po_number": 0.97,
+    "currency": 0.97,
+    "subtotal": 0.97,
+    "tax_total": 0.97,
+    "total": 0.97,
+    "line_items": 0.97
+  },
+  "validation": {
+    "line_items_sum_ok": true,
+    "subtotal_plus_tax_ok": true
+  }
+}

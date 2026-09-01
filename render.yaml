@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: payflow
+    runtime: docker
+    plan: free            # free tier — no credit card
+    healthCheckPath: /health
+    envVars:
+      - key: GEMINI_API_KEY      # set as a secret in the Render dashboard
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.6-flash
+      - key: EXTRACTION_PROVIDER
+        value: gemini
+      - key: EXTRACTION_CACHE
+        value: "1"
+      - key: SEED_DEMO_ON_START
+        value: "1"
+      - key: DB_PATH
+        value: /tmp/verdict.db

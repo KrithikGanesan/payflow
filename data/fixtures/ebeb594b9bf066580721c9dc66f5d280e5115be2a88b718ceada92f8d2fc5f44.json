@@ -1,0 +1,48 @@
+{
+  "doc_type": "INVOICE",
+  "vendor_name": "Cyberdyne Systems Corp",
+  "vendor_tax_id": "US-77-2029384",
+  "vendor_address": "18 Skynet Way, Sunnyvale, CA 94089",
+  "invoice_number": "CY-2026-990",
+  "invoice_date": "2026-08-27",
+  "due_date": "2026-09-26",
+  "po_number": "PO-1006",
+  "currency": "USD",
+  "line_items": [
+    {
+      "description": "Data center server rack (fully populated)",
+      "quantity": 4.0,
+      "unit_price": 10000.0,
+      "amount": 40000.0,
+      "tax_rate": null
+    }
+  ],
+  "subtotal": 40000.0,
+  "tax_total": 0.0,
+  "freight": null,
+  "discount": null,
+  "total": 40000.0,
+  "payment_terms": "Net 30",
+  "remit_to_bank": null,
+  "confidence": {
+    "doc_type": 1.0,
+    "vendor_name": 1.0,
+    "vendor_tax_id": 1.0,
+    "vendor_address": 1.0,
+    "invoice_number": 1.0,
+    "invoice_date": 1.0,
+    "due_date": 1.0,
+    "po_number": 1.0,
+    "currency": 1.0,
+    "line_items": 0.98,
+    "subtotal": 1.0,
+    "tax_total": 1.0,
+    "total": 1.0,
+    "payment_terms": 0.95,
+    "_overall": 0.995
+  },
+  "validation": {
+    "line_items_sum_ok": true,
+    "subtotal_plus_tax_ok": true
+  }
+}

@@ -1,0 +1,275 @@
+<title>PayFlow</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;450;500;600&display=swap">
+
+<style>
+  :root {
+    --ground: #f6f7fb;
+    --surface: #ffffff;
+    --surface-2: #f0f2f8;
+    --ink: #14161c;
+    --muted: #5c6072;
+    --faint: #8a8fa3;
+    --line: #e3e6ef;
+    --accent: #4f46e5;
+    --accent-soft: #eef1ff;
+    --approve: #047857; --approve-soft: #e7f4ee;
+    --hold: #b45309;    --hold-soft: #fbf1e3;
+    --reject: #be123c;  --reject-soft: #fbe9ee;
+    --shadow: 0 1px 2px rgba(20,22,28,.04), 0 8px 24px rgba(20,22,28,.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0a0c12;
+      --surface: #12151e;
+      --surface-2: #171b26;
+      --ink: #eceef5;
+      --muted: #9aa0b4;
+      --faint: #6e7488;
+      --line: #262b39;
+      --accent: #8f8bff;
+      --accent-soft: #1e2140;
+      --approve: #34d399; --approve-soft: #12271f;
+      --hold: #fbbf24;    --hold-soft: #2a1f0c;
+      --reject: #fb7185;  --reject-soft: #2b1119;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0a0c12;
+    --surface: #12151e;
+    --surface-2: #171b26;
+    --ink: #eceef5;
+    --muted: #9aa0b4;
+    --faint: #6e7488;
+    --line: #262b39;
+    --accent: #8f8bff;
+    --accent-soft: #1e2140;
+    --approve: #34d399; --approve-soft: #12271f;
+    --hold: #fbbf24;    --hold-soft: #2a1f0c;
+    --reject: #fb7185;  --reject-soft: #2b1119;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: clamp(2rem, 5vw, 4.5rem) clamp(1.1rem, 4vw, 2.5rem) 4rem; }
+
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: .72rem; font-weight: 500;
+    letter-spacing: .18em; text-transform: uppercase;
+    color: var(--accent);
+    display: flex; align-items: center; gap: .6rem;
+  }
+  .eyebrow::before { content: ""; width: 1.6rem; height: 2px; background: var(--accent); border-radius: 2px; }
+
+  h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500; font-size: clamp(2.6rem, 7vw, 4.2rem);
+    line-height: .98; letter-spacing: -.015em;
+    margin: 1.1rem 0 .2rem; text-wrap: balance;
+  }
+  .tagline { font-family: "Fraunces", Georgia, serif; font-weight: 400; font-style: italic; font-size: clamp(1.15rem, 2.6vw, 1.5rem); color: var(--muted); margin: 0 0 1.4rem; }
+  .lede { max-width: 64ch; font-size: 1.06rem; color: var(--ink); }
+  .lede strong { font-weight: 600; }
+
+  .quote {
+    margin: 2rem 0 0; padding: 1.1rem 1.4rem;
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    border-radius: 0 10px 10px 0;
+    font-family: "Fraunces", Georgia, serif; font-size: 1.1rem; font-style: italic;
+    color: var(--ink);
+  }
+
+  section { margin-top: clamp(2.6rem, 6vw, 4rem); }
+  h2 {
+    font-family: "Fraunces", Georgia, serif; font-weight: 500;
+    font-size: 1.7rem; letter-spacing: -.01em; margin: 0 0 .3rem;
+  }
+  .section-note { color: var(--muted); font-size: .96rem; margin: 0 0 1.5rem; max-width: 60ch; }
+
+  /* pipeline strip */
+  .pipe { display: flex; flex-wrap: wrap; gap: .5rem; align-items: stretch; }
+  .pipe .stage {
+    flex: 1 1 8rem; min-width: 7rem;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: .7rem .8rem; box-shadow: var(--shadow);
+  }
+  .pipe .num { font-family: "IBM Plex Mono", monospace; font-size: .7rem; color: var(--faint); }
+  .pipe .nm { font-weight: 600; font-size: .95rem; }
+  .pipe .sub { font-size: .78rem; color: var(--muted); }
+
+  /* principles grid */
+  .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 1.25rem 1.35rem; box-shadow: var(--shadow);
+  }
+  .card h3 { margin: 0 0 .35rem; font-size: 1.02rem; font-weight: 600; letter-spacing: -.005em; }
+  .card p { margin: 0; color: var(--muted); font-size: .93rem; }
+  .card .k { font-family: "IBM Plex Mono", monospace; font-size: .72rem; color: var(--accent); letter-spacing: .08em; text-transform: uppercase; }
+
+  /* decision cards (the demo) */
+  .cases { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .case {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 1.25rem 1.35rem; box-shadow: var(--shadow);
+    display: flex; flex-direction: column; gap: .55rem;
+    border-top: 3px solid var(--tone, var(--line));
+  }
+  .case .vendor { font-family: "IBM Plex Mono", monospace; font-size: .82rem; color: var(--muted); }
+  .case .amount { font-family: "IBM Plex Mono", monospace; font-weight: 600; font-size: 1.55rem; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+  .case .why { color: var(--ink); font-size: .93rem; }
+  .case .why b { font-weight: 600; }
+
+  .chip {
+    align-self: flex-start;
+    font-family: "IBM Plex Mono", monospace; font-weight: 600;
+    font-size: .74rem; letter-spacing: .08em; text-transform: uppercase;
+    padding: .22rem .6rem; border-radius: 999px; border: 1px solid transparent;
+  }
+  .approve { --tone: var(--approve); color: var(--approve); background: var(--approve-soft); border-color: color-mix(in srgb, var(--approve) 30%, transparent); }
+  .hold    { --tone: var(--hold);    color: var(--hold);    background: var(--hold-soft);    border-color: color-mix(in srgb, var(--hold) 30%, transparent); }
+  .reject  { --tone: var(--reject);  color: var(--reject);  background: var(--reject-soft);  border-color: color-mix(in srgb, var(--reject) 30%, transparent); }
+
+  /* also-handled chips */
+  .also { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .tag {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+    padding: .45rem .7rem; font-size: .86rem; box-shadow: var(--shadow);
+  }
+  .tag .dot { width: .5rem; height: .5rem; border-radius: 50%; flex: none; }
+  .tag .verdict { font-family: "IBM Plex Mono", monospace; font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+
+  /* talking points */
+  ul.points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .8rem; }
+  ul.points li { position: relative; padding-left: 1.5rem; color: var(--ink); }
+  ul.points li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-family: "IBM Plex Mono", monospace; }
+  ul.points b { font-weight: 600; }
+
+  footer { margin-top: 3.5rem; padding-top: 1.4rem; border-top: 1px solid var(--line); color: var(--faint); font-size: .82rem; font-family: "IBM Plex Mono", monospace; letter-spacing: .04em; }
+
+  @media (max-width: 640px) {
+    .grid2, .cases { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">AP Decision Engine · Case-Study Briefing</div>
+    <h1>PayFlow</h1>
+    <p class="tagline">From a vendor invoice to a decision you can defend.</p>
+    <p class="lede">A vendor emails a messy PDF invoice. PayFlow reads it, checks it against the purchase order, the goods receipt, the vendor master, and the company's spend history — then returns one of three answers, <strong>APPROVE&nbsp;/&nbsp;HOLD&nbsp;/&nbsp;REJECT</strong>, with every number it compared shown in plain English. It auto-clears the safe majority and hands a human a <em>pre-investigated</em> exception, not a black box.</p>
+    <p class="quote">The job isn't “extract the fields.” It's making a defensible decision under messy inputs — and being able to explain it to the person who has to act on it.</p>
+  </header>
+
+  <section>
+    <h2>How it decides</h2>
+    <p class="section-note">Four principles run underneath every verdict. They're the whole point — the judgment, not the plumbing.</p>
+    <div class="grid2">
+      <div class="card"><div class="k">Principle 01</div><h3>Bias to HOLD when unsure</h3><p>A wrong auto-approve loses real money that's hard to claw back; an unnecessary hold costs a clerk ~2 minutes. So when uncertain: hold. REJECT is reserved for the unambiguously wrong.</p></div>
+      <div class="card"><div class="k">Principle 02</div><h3>Confidence × Materiality</h3><p>Scrutiny scales on two axes at once — how sure the extraction is, and how much money is on the line. A $40 invoice and a $400K invoice are not checked the same way.</p></div>
+      <div class="card"><div class="k">Principle 03</div><h3>Most-severe gate wins</h3><p>Gates run in order and accumulate. One red flag beats ten green checks — a clean invoice from an unapproved vendor still holds.</p></div>
+      <div class="card"><div class="k">Principle 04</div><h3>Always cite the numbers</h3><p>Never “held for review.” Instead: “subtotal $10,300 vs PO $10,000 = +3%, over the ±1% tolerance.” Auditable by design.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The pipeline</h2>
+    <p class="section-note">Six stages, streamed live in the UI — each lights up as it runs, so the whole decision is watchable.</p>
+    <div class="pipe">
+      <div class="stage"><div class="num">01</div><div class="nm">Received</div><div class="sub">Ingest &amp; hash</div></div>
+      <div class="stage"><div class="num">02</div><div class="nm">Extracted</div><div class="sub">Vision + text (Gemini)</div></div>
+      <div class="stage"><div class="num">03</div><div class="nm">Coded</div><div class="sub">GL account + cost centre</div></div>
+      <div class="stage"><div class="num">04</div><div class="nm">Matched</div><div class="sub">PO ↔ goods receipt</div></div>
+      <div class="stage"><div class="num">05</div><div class="nm">Validated</div><div class="sub">Gates &amp; checks</div></div>
+      <div class="stage"><div class="num">06</div><div class="nm">Decided</div><div class="sub">Verdict + routing</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The demo — the invoices we'll show, live</h2>
+    <p class="section-note">Each is dragged into the app and read by Gemini on the spot (never seen before). Together they span a clean approval, real 3-way depth, a financial control, a fraud instinct, a policy call, and a timing judgment — six different kinds of decision. Each is read by Gemini live, on the spot.</p>
+    <div class="cases">
+      <div class="case approve">
+        <span class="chip approve">Approve</span>
+        <div class="vendor">Acme Corporation Inc. · PO-1001</div>
+        <div class="amount">$12,000</div>
+        <div class="why">Clean <b>3-way match</b> — invoice = PO = goods receipt, within tolerance. Straight-through, no human needed.</div>
+      </div>
+      <div class="case hold">
+        <span class="chip hold">Hold</span>
+        <div class="vendor">Stark Logistics LLC · PO-1004</div>
+        <div class="amount">$10,300 <span style="font-size:.8rem;color:var(--muted)">+ $800 tax</span></div>
+        <div class="why">The <b>goods</b> are 3% over the PO — beyond the ±1% / $25 tolerance. Tax &amp; freight are <b>excluded</b> from the comparison; only the goods variance trips it.</div>
+      </div>
+      <div class="case hold">
+        <span class="chip hold">Hold</span>
+        <div class="vendor">Cyberdyne Systems Corp · PO-1006</div>
+        <div class="amount">$40,000</div>
+        <div class="why">Matches the PO and the receipt <b>exactly</b> — but it's ~<b>20× this vendor's normal spend</b>. Flagged as an anomaly before anyone pays it.</div>
+      </div>
+      <div class="case approve">
+        <span class="chip approve">Approve + notify</span>
+        <div class="vendor">Umbrella Facilities Corp · no PO</div>
+        <div class="amount">$385</div>
+        <div class="why">No PO needed — under the <b>$500 bypass limit</b> for a trusted, bypass-approved vendor. Auto-approved, and a note fires to Finance so <b>nothing is silent</b>.</div>
+      </div>
+      <div class="case approve">
+        <span class="chip approve">Approve</span>
+        <div class="vendor">Hooli Cloud Services · PO-1013</div>
+        <div class="amount">$10,000</div>
+        <div class="why">Received in <b>two shipments</b> ($4k + $6k). PayFlow <b>sums the goods receipts</b> and matches — a naive matcher, seeing only the first receipt, would wrongly reject it. Real 3-way depth.</div>
+      </div>
+      <div class="case hold">
+        <span class="chip hold">Hold</span>
+        <div class="vendor">Pied Piper Data Corp · PO-1014</div>
+        <div class="amount">$8,000</div>
+        <div class="why">The invoice arrived <b>before the goods receipt</b>. Held <b>awaiting receipt</b> — not rejected; the goods may be in transit. A timing/lifecycle call, not a mismatch.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Also handled</h2>
+    <p class="section-note">The edge cases aren't only the four above — the engine deliberately behaves differently on each of these, and any can be shown on request.</p>
+    <div class="also">
+      <span class="tag"><span class="dot" style="background:var(--hold)"></span>Fuzzy duplicate <span class="verdict">hold</span></span>
+      <span class="tag"><span class="dot" style="background:var(--reject)"></span>Exact duplicate <span class="verdict">reject</span></span>
+      <span class="tag"><span class="dot" style="background:var(--hold)"></span>Scanned / low-confidence <span class="verdict">hold</span></span>
+      <span class="tag"><span class="dot" style="background:var(--hold)"></span>Unapproved / ghost vendor <span class="verdict">hold</span></span>
+      <span class="tag"><span class="dot" style="background:var(--hold)"></span>Vendor name mismatch <span class="verdict">hold</span></span>
+      <span class="tag"><span class="dot" style="background:var(--hold)"></span>Credit memo (negative) <span class="verdict">hold</span></span>
+      <span class="tag"><span class="dot" style="background:var(--hold)"></span>Currency mismatch <span class="verdict">hold</span></span>
+      <span class="tag"><span class="dot" style="background:var(--approve)"></span>Split-PO partial billing <span class="verdict">approve</span></span>
+    </div>
+  </section>
+
+  <section>
+    <h2>What to say in the room</h2>
+    <ul class="points">
+      <li><b>The real AP bottleneck isn't fraud — it's GL coding</b> (which budget each invoice hits). I built that in and gate it by confidence. Most people miss it.</li>
+      <li><b>I optimised for the cost of being wrong, not accuracy in a vacuum</b> — that's why the system leans to HOLD.</li>
+      <li><b>I scoped out OFAC screening, 1099 tracking, and month-end accruals on purpose</b> — and I can point to exactly where each would plug in.</li>
+      <li><b>The goal metric is straight-through-processing rate</b> — auto-clear the safe ~80%, catch 100% of the risky ones, and make every hold resolvable in seconds.</li>
+    </ul>
+  </section>
+
+  <footer>PayFlow · invoice → decision · FastAPI · Gemini · React · a case-study build</footer>
+
+</div>

@@ -1,0 +1,49 @@
+{
+  "doc_type": "INVOICE",
+  "vendor_name": "Globex Industrial Supply LLC",
+  "vendor_tax_id": "US-77-5566778",
+  "vendor_address": "18 Harbor Rd, Newark, NJ 07102",
+  "invoice_number": "GLBX-4521",
+  "invoice_date": "2026-08-26",
+  "due_date": "2026-09-25",
+  "po_number": "PO-1002",
+  "currency": "USD",
+  "line_items": [
+    {
+      "description": "Industrial shelving unit",
+      "quantity": 15.0,
+      "unit_price": 200.0,
+      "amount": 3000.0,
+      "tax_rate": null
+    },
+    {
+      "description": "Safety equipment kit",
+      "quantity": 30.0,
+      "unit_price": 50.0,
+      "amount": 1500.0,
+      "tax_rate": null
+    }
+  ],
+  "subtotal": 4500.0,
+  "tax_total": 12.0,
+  "freight": 0.0,
+  "discount": 0.0,
+  "total": 4512.0,
+  "payment_terms": "Net 30",
+  "remit_to_bank": "sha256:1b8e3f6a2c90",
+  "confidence": {
+    "vendor_name": 0.97,
+    "invoice_number": 0.97,
+    "invoice_date": 0.97,
+    "po_number": 0.97,
+    "currency": 0.97,
+    "subtotal": 0.97,
+    "tax_total": 0.97,
+    "total": 0.97,
+    "line_items": 0.97
+  },
+  "validation": {
+    "line_items_sum_ok": true,
+    "subtotal_plus_tax_ok": true
+  }
+}

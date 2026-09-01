@@ -1,0 +1,42 @@
+{
+  "doc_type": "INVOICE",
+  "vendor_name": "Pied Piper Data Corp",
+  "vendor_tax_id": "US-90-7773434",
+  "vendor_address": "5230 Newell Rd, Palo Alto, CA 94303",
+  "invoice_number": "PP-2026-007",
+  "invoice_date": "2026-08-27",
+  "due_date": "2026-09-26",
+  "po_number": "PO-1014",
+  "currency": "USD",
+  "line_items": [
+    {
+      "description": "Data pipeline build - milestone 1",
+      "quantity": 1.0,
+      "unit_price": 8000.0,
+      "amount": 8000.0,
+      "tax_rate": null
+    }
+  ],
+  "subtotal": 8000.0,
+  "tax_total": 0.0,
+  "freight": 0.0,
+  "discount": 0.0,
+  "total": 8000.0,
+  "payment_terms": "Net 30",
+  "remit_to_bank": "sha256:dd44ee55ff66",
+  "confidence": {
+    "vendor_name": 0.97,
+    "invoice_number": 0.97,
+    "invoice_date": 0.97,
+    "po_number": 0.97,
+    "currency": 0.97,
+    "subtotal": 0.97,
+    "tax_total": 0.97,
+    "total": 0.97,
+    "line_items": 0.97
+  },
+  "validation": {
+    "line_items_sum_ok": true,
+    "subtotal_plus_tax_ok": true
+  }
+}
